@@ -1,0 +1,27 @@
+{% extends 'portfolio/base.html' %}
+{% block content%}
+<h1>This is the homepage of Samantha's portfolio</h1>
+
+
+
+{% load static %}
+
+<a href = "{% static 'portfolio/beagle.jfif' %}"> Click this link to see another dog! </a>
+<br>
+<img src = "{% static 'portfolio/shiba.jpeg' %}" width="600" />
+<br>
+
+<a href="{% url 'blog:all_blogs'  %}"><h2>link to Samantha's blog (app)</h2></a>
+
+
+
+{% for i in project %}
+<h2>{{ i.title }}</h2>
+<p>{{ i.description }}</p>
+<img src = "{{i.image.url}}" width="600" />
+{% if i.url %}
+<br><a href = "{{i.url}}">Link</a>
+{%endif%}
+{%endfor%}
+
+{%endblock%}

@@ -1,0 +1,17 @@
+
+{% extends 'portfolio/base.html' %}
+{% block content%}
+
+
+<h1>Sam has {{ blog.count}} blog{{ blog.count|pluralize}}</h1>
+
+{% for i in blog %}
+
+<a href="{% url 'blog:detail' i.id %}"><h2>{{ i.title }}</h2></a>
+<p>{{ i.description | truncatechars:100}}</p>
+{% if i.url %}
+<br><a href = "{{i.url}}">Link</a>
+{%endif%}
+{%endfor%}
+
+{%endblock%}
